@@ -1,4 +1,5 @@
 export class Book {
+  id: string;
   title: string;
   description: string;
   author?: string;
@@ -6,3 +7,5 @@ export class Book {
   imagePath?: string;
   filePath?: string;
 }
+
+export type CreateBookData = Omit<Book, 'id'>
