@@ -5,7 +5,6 @@ export class Book {
   author?: string
   publicationDate?: Date
   imagePath?: string
-  filePath?: string
 }
 
 export type CreateBookData = Omit<Book, 'id'>

@@ -1,9 +1,5 @@
-type UploadInfo = {
-  headers: any
-  onFile: any
-  onFinish: any
-}
+import { File, UploadedFile } from '../../../domain/models'
 
 export interface UploaderHelper {
-  upload(uploadInfo: UploadInfo): any
+  upload(file: File): Promise<UploadedFile>
 }
