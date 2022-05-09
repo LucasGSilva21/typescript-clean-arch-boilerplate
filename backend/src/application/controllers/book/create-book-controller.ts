@@ -7,8 +7,8 @@ export class CreateBookController implements Controller {
   ) {}
 
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
-    const { files } = httpRequest.body
-    const book = await this.createBook.create(httpRequest.body, files)
+    const { body, file } = httpRequest
+    const book = await this.createBook.create(body, file)
     return {
       statusCode: 200,
       body: book
