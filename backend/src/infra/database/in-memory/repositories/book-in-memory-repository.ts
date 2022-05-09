@@ -4,9 +4,10 @@ import { BookRepository } from '../../../../application/protocols/repositories/b
 export class BookInMemoryRepository implements BookRepository {
   async create (createBookData: CreateBookData): Promise<Book> {
     return Promise.resolve({
-      id: 'valid_id',
-      title: 'valid_title',
-      description: 'valid_description'
+      id: `${Date.now()}`,
+      title: createBookData.title,
+      description: createBookData.description,
+      imagePath: createBookData.imagePath
     })
   }
 }

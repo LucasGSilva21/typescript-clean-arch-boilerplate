@@ -4,7 +4,7 @@ import { File, UploadedFile } from '../../domain/models'
 export class LocalUploaderHelper implements UploaderHelper {
   async upload (file: File): Promise<UploadedFile> {
     return Promise.resolve({
-      path: 'test'
+      path: 'valid_path'
     })
   }
 }
