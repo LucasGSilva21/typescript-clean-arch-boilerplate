@@ -1,7 +1,8 @@
 export interface File {
-  name: string;
+  fieldname: string
+  originalname: string;
+  encoding: string
+  mimetype: string;
+  buffer: ArrayBuffer;
   size: number;
-  type: string;
-  extension: string;
-  content: ArrayBuffer;
 }
