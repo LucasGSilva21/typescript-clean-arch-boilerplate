@@ -18,8 +18,9 @@ export class CreateBookUseCase implements CreateBook {
       }
       createBookData.imagePath = uploadedFile.path
     }
+
     const book = await this.bookRepository.create(createBookData)
-    console.log('book: ', book)
+
     return book
   }
 }
