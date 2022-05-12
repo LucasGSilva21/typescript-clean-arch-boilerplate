@@ -1,3 +1,10 @@
-import { app } from './config/app'
+import { PgConnection } from '../infra/database/postgres/helpers/connection'
 
-app.listen(3333)
+const port = 3333
+
+PgConnection.getInstance().connect()
+  .then(async () => {
+    const { app } = await import('./config/app')
+    app.listen(port, () => console.log(`Server running at http://localhost:${port}`))
+  })
+  .catch(console.error)
