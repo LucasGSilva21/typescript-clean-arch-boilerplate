@@ -1,12 +1,12 @@
 import { Book, CreateBookData } from 'domain/entities/book'
 import { CreateBook } from '../../../domain/usecases/book/create-book'
-import { BookRepository } from '../../protocols/repositories/book-repository'
+import { CreateBookRepository } from '../../protocols/repositories/book'
 import { UploaderHelper } from '../../protocols/helpers/uploader-helper'
 import { File } from '../../../domain/models'
 
 export class CreateBookUseCase implements CreateBook {
   constructor (
-    private readonly bookRepository: BookRepository,
+    private readonly createBookRepository: CreateBookRepository,
     private readonly uploaderHelper: UploaderHelper
   ) {}
 
@@ -19,7 +19,7 @@ export class CreateBookUseCase implements CreateBook {
       createBookData.imagePath = uploadedFile.path
     }
 
-    const book = await this.bookRepository.create(createBookData)
+    const book = await this.createBookRepository.create(createBookData)
 
     return book
   }

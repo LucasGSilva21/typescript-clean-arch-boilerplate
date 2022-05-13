@@ -1,7 +1,7 @@
 import { Book, CreateBookData } from 'domain/entities/book'
-import { BookRepository } from '../../../../application/protocols/repositories/book-repository'
+import { CreateBookRepository } from '../../../../application/protocols/repositories/book'
 
-export class BookInMemoryRepository implements BookRepository {
+export class BookInMemoryRepository implements CreateBookRepository {
   async create (createBookData: CreateBookData): Promise<Book> {
     return Promise.resolve({
       id: `${Date.now()}`,
