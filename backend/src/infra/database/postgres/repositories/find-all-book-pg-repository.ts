@@ -3,7 +3,7 @@ import { FindAllRepository } from '../../../../application/protocols/repositorie
 import { PgRepository } from '../helpers/repository'
 import { PgBook } from '../entities/book'
 
-export class PgListAllBookRepository extends PgRepository implements FindAllRepository {
+export class PgFindAllBookRepository extends PgRepository implements FindAllRepository {
   async findAll (): Promise<Book[]> {
     const pgBookRepo = this.getRepository(PgBook)
 
