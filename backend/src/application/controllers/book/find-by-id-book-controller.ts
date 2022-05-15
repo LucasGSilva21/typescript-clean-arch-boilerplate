@@ -7,7 +7,7 @@ export class FindByIdBookController implements Controller {
   ) {}
 
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
-    const { id } = httpRequest.body
+    const { id } = httpRequest.params
     const book = await this.findByIdBook.findById(id)
     return {
       statusCode: 200,
