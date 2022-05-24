@@ -1,4 +1,5 @@
 export default {
+  roots: ['<rootDir>/tests'],
   clearMocks: true,
   collectCoverage: true,
   coverageDirectory: 'coverage',
