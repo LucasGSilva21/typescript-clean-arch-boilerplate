@@ -1,6 +1,7 @@
 import { FindAllBookUseCase } from '../../../../../src/application/usecases/book'
 import { FindAllBookRepository } from '../../../../../src/application/protocols/repositories/book'
 import { mockFindAllBookRepository } from '../../../../utils/mocks/application/mock-find-all-book-repository'
+import { mockBook } from '../../../../utils/mocks/domain/mock-book'
 
 type SutTypes = {
   sut: FindAllBookUseCase
@@ -22,5 +23,11 @@ describe('FindAllBookUseCase', () => {
     const loadSpy = jest.spyOn(findAllBookRepositoryStub, 'findAll')
     await sut.findAll()
     expect(loadSpy).toHaveBeenCalled()
+  })
+
+  test('Should return a list of books', async () => {
+    const { sut } = makeSut()
+    const books = await sut.findAll()
+    expect(books).toEqual([mockBook(), mockBook()])
   })
 })
