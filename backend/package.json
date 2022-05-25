@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:cov": "jest --coverage",
     "test:load": "docker-compose run k6 run /scripts/ewoks.js",
     "start:dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/main/server.ts"
   },
