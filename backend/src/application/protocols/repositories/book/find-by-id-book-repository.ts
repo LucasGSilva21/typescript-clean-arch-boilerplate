@@ -1,5 +1,5 @@
 import { Book } from 'domain/entities/book'
 
-export interface FindByIdRepository {
+export interface FindByIdBookRepository {
   findById (id: string): Promise<Book>
 }

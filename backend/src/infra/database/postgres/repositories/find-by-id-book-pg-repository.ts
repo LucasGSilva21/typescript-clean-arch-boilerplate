@@ -1,9 +1,9 @@
 import { Book } from '../../../../domain/entities/book'
-import { FindByIdRepository } from '../../../../application/protocols/repositories/book'
+import { FindByIdBookRepository } from '../../../../application/protocols/repositories/book'
 import { PgRepository } from '../helpers/repository'
 import { PgBook } from '../entities/book'
 
-export class PgFindByIdBookRepository extends PgRepository implements FindByIdRepository {
+export class PgFindByIdBookRepository extends PgRepository implements FindByIdBookRepository {
   async findById (id: string): Promise<Book> {
     const pgBookRepo = this.getRepository(PgBook)
 

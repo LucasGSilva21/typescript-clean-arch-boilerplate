@@ -1,14 +1,14 @@
 import { Book } from 'domain/entities/book'
 import { FindByIdBook } from 'domain/usecases/book'
-import { FindByIdRepository } from 'application/protocols/repositories/book'
+import { FindByIdBookRepository } from 'application/protocols/repositories/book'
 
 export class FindByIdBookUseCase implements FindByIdBook {
   constructor (
-    private readonly findByIdRepository: FindByIdRepository
+    private readonly findByIdBookRepository: FindByIdBookRepository
   ) {}
 
   async findById (id: string): Promise<Book> {
-    const book = this.findByIdRepository.findById(id)
+    const book = this.findByIdBookRepository.findById(id)
 
     return book
   }
