@@ -1,25 +1,25 @@
 import { FindAllBookUseCase } from '../../../../../src/application/usecases/book'
-import { FindAllRepository } from '../../../../../src/application/protocols/repositories/book'
+import { FindAllBookRepository } from '../../../../../src/application/protocols/repositories/book'
 import { mockFindAllBookRepository } from '../../../../utils/mocks/application/mock-find-all-book-repository'
 
 type SutTypes = {
   sut: FindAllBookUseCase
-  findAllRepositoryStub: FindAllRepository
+  findAllBookRepositoryStub: FindAllBookRepository
 }
 
 const makeSut = (): SutTypes => {
-  const findAllRepositoryStub = mockFindAllBookRepository()
-  const sut = new FindAllBookUseCase(findAllRepositoryStub)
+  const findAllBookRepositoryStub = mockFindAllBookRepository()
+  const sut = new FindAllBookUseCase(findAllBookRepositoryStub)
   return {
     sut,
-    findAllRepositoryStub
+    findAllBookRepositoryStub
   }
 }
 
-describe('FindAllRepository', () => {
-  test('Should call FindAllRepository', async () => {
-    const { sut, findAllRepositoryStub } = makeSut()
-    const loadSpy = jest.spyOn(findAllRepositoryStub, 'findAll')
+describe('FindAllBookUseCase', () => {
+  test('Should call FindAllBookRepository', async () => {
+    const { sut, findAllBookRepositoryStub } = makeSut()
+    const loadSpy = jest.spyOn(findAllBookRepositoryStub, 'findAll')
     await sut.findAll()
     expect(loadSpy).toHaveBeenCalled()
   })

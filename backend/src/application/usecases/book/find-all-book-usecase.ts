@@ -1,14 +1,14 @@
 import { Book } from 'domain/entities/book'
 import { FindAllBook } from 'domain/usecases/book'
-import { FindAllRepository } from 'application/protocols/repositories/book'
+import { FindAllBookRepository } from 'application/protocols/repositories/book'
 
 export class FindAllBookUseCase implements FindAllBook {
   constructor (
-    private readonly findAllRepository: FindAllRepository
+    private readonly findAllBookRepository: FindAllBookRepository
   ) {}
 
   async findAll (): Promise<Book[]> {
-    const books = this.findAllRepository.findAll()
+    const books = this.findAllBookRepository.findAll()
 
     return books
   }
