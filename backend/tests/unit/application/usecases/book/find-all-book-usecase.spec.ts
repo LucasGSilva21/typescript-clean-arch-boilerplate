@@ -1,7 +1,8 @@
 import { FindAllBookUseCase } from '../../../../../src/application/usecases/book'
 import { FindAllBookRepository } from '../../../../../src/application/protocols/repositories/book'
-import { mockFindAllBookRepository } from '../../../../utils/mocks/application/mock-find-all-book-repository'
+import { mockFindAllBookRepository } from '../../../../utils/mocks/application'
 import { mockBook } from '../../../../utils/mocks/domain/mock-book'
+import { throwError } from '../../../../utils/helpers/throw-error'
 
 type SutTypes = {
   sut: FindAllBookUseCase
@@ -29,5 +30,12 @@ describe('FindAllBookUseCase', () => {
     const { sut } = makeSut()
     const books = await sut.findAll()
     expect(books).toEqual([mockBook(), mockBook()])
+  })
+
+  test('Should throw if FindAllBookRepository throws', async () => {
+    const { sut, findAllBookRepositoryStub } = makeSut()
+    jest.spyOn(findAllBookRepositoryStub, 'findAll').mockImplementationOnce(throwError)
+    const promise = sut.findAll()
+    await expect(promise).rejects.toThrow()
   })
 })
