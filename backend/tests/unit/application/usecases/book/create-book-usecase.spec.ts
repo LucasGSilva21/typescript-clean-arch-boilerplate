@@ -41,11 +41,18 @@ describe('CreateBookUseCase', () => {
     expect(createSpy).toHaveBeenCalledWith(mockCreateBookData())
   })
 
-  test('Should calls CreateBookRepository with correct value if file field is provided', async () => {
+  test('Should calls UploaderHelper with correct value if file field is provided', async () => {
     const { sut, uploaderHelper } = makeSut()
     const uploadSpy = jest.spyOn(uploaderHelper, 'upload')
     await sut.create(mockCreateBookData(), mockFile())
     expect(uploadSpy).toHaveBeenCalledWith(mockFile())
+  })
+
+  test('Should throw if UploaderHelper not return a uploaded file', async () => {
+    const { sut, uploaderHelper } = makeSut()
+    jest.spyOn(uploaderHelper, 'upload').mockImplementationOnce(() => null)
+    const promise = sut.create(mockCreateBookData(), mockFile())
+    await expect(promise).rejects.toThrow()
   })
 
   test('Should throw if CreateBookRepository throws', async () => {
