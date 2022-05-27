@@ -1,4 +1,4 @@
-import { Book } from '../../../../src/domain/entities/book'
+import { Book, CreateBookData } from '../../../../src/domain/entities/book'
 
 export const mockBook = (): Book => {
   const book = new Book()
@@ -11,4 +11,13 @@ export const mockBook = (): Book => {
   book.imagePath = 'book-image-path'
 
   return book
+}
+
+export const mockCreateBookData = (): CreateBookData => {
+  return {
+    title: 'book-title',
+    description: 'book-description',
+    author: 'book-author',
+    publicationDate: new Date()
+  }
 }
