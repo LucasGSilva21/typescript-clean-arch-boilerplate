@@ -4,6 +4,7 @@ import { UploaderHelper } from '../../../../../src/application/protocols/helpers
 import { mockCreateBookRepository } from '../../../../utils/mocks/application'
 import { mockUploaderHelper } from '../../../../utils/mocks/application/helpers/mock-uploader-helper'
 import { mockCreateBookData } from '../../../../utils/mocks/domain/mock-book'
+import { throwError } from '../../../../utils/helpers/throw-error'
 import MockDate from 'mockdate'
 
 type SutTypes = {
@@ -23,7 +24,7 @@ const makeSut = (): SutTypes => {
   }
 }
 
-describe('FindByIdBookUseCase', () => {
+describe('CreateBookUseCase', () => {
   beforeAll(() => {
     MockDate.set(new Date())
   })
@@ -37,5 +38,12 @@ describe('FindByIdBookUseCase', () => {
     const loadSpy = jest.spyOn(createBookRepository, 'create')
     await sut.create(mockCreateBookData())
     expect(loadSpy).toHaveBeenCalled()
+  })
+
+  test('Should throw if CreateBookRepository throws', async () => {
+    const { sut, createBookRepository } = makeSut()
+    jest.spyOn(createBookRepository, 'create').mockImplementationOnce(throwError)
+    const promise = sut.create(mockCreateBookData())
+    await expect(promise).rejects.toThrow()
   })
 })
