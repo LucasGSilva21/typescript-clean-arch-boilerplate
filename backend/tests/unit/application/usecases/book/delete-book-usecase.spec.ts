@@ -1,6 +1,7 @@
 import { DeleteBookUseCase } from '../../../../../src/application/usecases/book'
 import { DeleteBookRepository, FindByIdBookRepository } from '../../../../../src/application/protocols/repositories/book'
 import { mockFindByIdBookRepository, mockDeleteBookRepository } from '../../../../utils/mocks/application'
+import { throwError } from '../../../../utils/helpers/throw-error'
 
 type SutTypes = {
   sut: DeleteBookUseCase
@@ -25,5 +26,12 @@ describe('DeleteBookUseCase', () => {
     const deleteSpy = jest.spyOn(deleteBookRepository, 'delete')
     await sut.delete('any_id')
     expect(deleteSpy).toHaveBeenCalledWith('any_id')
+  })
+
+  test('Should throw if DeleteBookRepository throws', async () => {
+    const { sut, deleteBookRepository } = makeSut()
+    jest.spyOn(deleteBookRepository, 'delete').mockImplementationOnce(throwError)
+    const promise = sut.delete('valid_id')
+    await expect(promise).rejects.toThrow()
   })
 })
