@@ -3,6 +3,7 @@ import { FindByIdBookRepository } from '../../../../../src/application/protocols
 import { mockFindByIdBookRepository } from '../../../../utils/mocks/application'
 import { mockBook } from '../../../../utils/mocks/domain/mock-book'
 import { throwError } from '../../../../utils/helpers/throw-error'
+import MockDate from 'mockdate'
 
 type SutTypes = {
   sut: FindByIdBookUseCase
@@ -19,6 +20,14 @@ const makeSut = (): SutTypes => {
 }
 
 describe('FindByIdBookUseCase', () => {
+  beforeAll(() => {
+    MockDate.set(new Date())
+  })
+
+  afterAll(() => {
+    MockDate.reset()
+  })
+
   test('Should call FindByIdBookRepository', async () => {
     const { sut, findByIdBookRepository } = makeSut()
     const loadSpy = jest.spyOn(findByIdBookRepository, 'findById')

@@ -3,6 +3,7 @@ import { FindAllBookRepository } from '../../../../../src/application/protocols/
 import { mockFindAllBookRepository } from '../../../../utils/mocks/application'
 import { mockBook } from '../../../../utils/mocks/domain/mock-book'
 import { throwError } from '../../../../utils/helpers/throw-error'
+import MockDate from 'mockdate'
 
 type SutTypes = {
   sut: FindAllBookUseCase
@@ -19,6 +20,14 @@ const makeSut = (): SutTypes => {
 }
 
 describe('FindAllBookUseCase', () => {
+  beforeAll(() => {
+    MockDate.set(new Date())
+  })
+
+  afterAll(() => {
+    MockDate.reset()
+  })
+
   test('Should call FindAllBookRepository', async () => {
     const { sut, findAllBookRepositoryStub } = makeSut()
     const loadSpy = jest.spyOn(findAllBookRepositoryStub, 'findAll')
