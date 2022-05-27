@@ -4,6 +4,7 @@ import { UploaderHelper } from '../../../../../src/application/protocols/helpers
 import { mockCreateBookRepository } from '../../../../utils/mocks/application'
 import { mockUploaderHelper } from '../../../../utils/mocks/application/helpers/mock-uploader-helper'
 import { mockCreateBookData } from '../../../../utils/mocks/domain/mock-book'
+import { mockFile } from '../../../../utils/mocks/domain/mock-file'
 import { throwError } from '../../../../utils/helpers/throw-error'
 import MockDate from 'mockdate'
 
@@ -35,9 +36,16 @@ describe('CreateBookUseCase', () => {
 
   test('Should calls CreateBookRepository with correct values', async () => {
     const { sut, createBookRepository } = makeSut()
-    const loadSpy = jest.spyOn(createBookRepository, 'create')
+    const createSpy = jest.spyOn(createBookRepository, 'create')
     await sut.create(mockCreateBookData())
-    expect(loadSpy).toHaveBeenCalled()
+    expect(createSpy).toHaveBeenCalledWith(mockCreateBookData())
+  })
+
+  test('Should calls CreateBookRepository with correct value if file field is provided', async () => {
+    const { sut, uploaderHelper } = makeSut()
+    const uploadSpy = jest.spyOn(uploaderHelper, 'upload')
+    await sut.create(mockCreateBookData(), mockFile())
+    expect(uploadSpy).toHaveBeenCalledWith(mockFile())
   })
 
   test('Should throw if CreateBookRepository throws', async () => {
