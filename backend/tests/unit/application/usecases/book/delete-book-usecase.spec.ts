@@ -21,6 +21,13 @@ const makeSut = (): SutTypes => {
 }
 
 describe('DeleteBookUseCase', () => {
+  test('Should call FindByIdBookRepository with correct values', async () => {
+    const { sut, findByIdBookRepository } = makeSut()
+    const deleteSpy = jest.spyOn(findByIdBookRepository, 'findById')
+    await sut.delete('any_id')
+    expect(deleteSpy).toHaveBeenCalledWith('any_id')
+  })
+
   test('Should call DeleteBookRepository with correct values', async () => {
     const { sut, deleteBookRepository } = makeSut()
     const deleteSpy = jest.spyOn(deleteBookRepository, 'delete')
