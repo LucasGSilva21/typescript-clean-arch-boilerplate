@@ -42,6 +42,13 @@ describe('DeleteBookUseCase', () => {
     await expect(promise).rejects.toThrow()
   })
 
+  test('Should throw if FindByIdBookRepository not found a book', async () => {
+    const { sut, findByIdBookRepository } = makeSut()
+    jest.spyOn(findByIdBookRepository, 'findById').mockImplementationOnce(() => null)
+    const promise = sut.delete('valid_id')
+    await expect(promise).rejects.toThrow()
+  })
+
   test('Should throw if DeleteBookRepository throws', async () => {
     const { sut, deleteBookRepository } = makeSut()
     jest.spyOn(deleteBookRepository, 'delete').mockImplementationOnce(throwError)
