@@ -10,7 +10,7 @@ export class CreateBookController implements Controller {
     const { body, file } = httpRequest
     const book = await this.createBook.create(body, file)
     return {
-      statusCode: 200,
+      statusCode: 201,
       body: book
     }
   }
