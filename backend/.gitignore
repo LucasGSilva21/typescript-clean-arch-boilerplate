@@ -1,4 +1,6 @@
 /node_modules
+/dist
 /.docker
 /images
 /coverage
+/.build
