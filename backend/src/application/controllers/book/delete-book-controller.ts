@@ -8,7 +8,17 @@ export class DeleteBookController implements Controller {
 
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
     const { id } = httpRequest.params
-    await this.deleteBook.delete(id)
+    const result = await this.deleteBook.delete(id)
+
+    if (!result) {
+      return {
+        statusCode: 400,
+        body: {
+          error: 'Book not found'
+        }
+      }
+    }
+
     return {
       statusCode: 204
     }

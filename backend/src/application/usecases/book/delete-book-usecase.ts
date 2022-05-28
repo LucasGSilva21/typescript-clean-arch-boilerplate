@@ -7,11 +7,15 @@ export class DeleteBookUseCase implements DeleteBook {
     private readonly findByIdBookRepository: FindByIdBookRepository
   ) {}
 
-  async delete (id: string): Promise<void> {
+  async delete (id: string): Promise<boolean> {
     const book = await this.findByIdBookRepository.findById(id)
+
     if (!book) {
-      throw new Error('Book not found')
+      return false
     }
+
     await this.deleteBookRepository.delete(id)
+
+    return true
   }
 }

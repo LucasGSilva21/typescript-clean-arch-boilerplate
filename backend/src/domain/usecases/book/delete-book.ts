@@ -1,3 +1,3 @@
 export interface DeleteBook {
-  delete (id: string): Promise<void>
+  delete (id: string): Promise<boolean>
 }
