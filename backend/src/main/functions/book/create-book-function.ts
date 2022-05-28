@@ -17,7 +17,7 @@ export const run = async (event: any) => {
     console.log(error)
     return {
       statusCode: 500,
-      body: error
+      body: 'Internal Server Error'
     }
   }
 }
