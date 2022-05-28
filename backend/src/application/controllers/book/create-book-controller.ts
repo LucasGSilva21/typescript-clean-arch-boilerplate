@@ -1,5 +1,6 @@
 import { Controller, HttpRequest, HttpResponse } from 'application/protocols/presentation'
 import { CreateBook } from '../../../domain/usecases/book/create-book'
+import { created, serverError } from '../../protocols/helpers/http-helper'
 
 export class CreateBookController implements Controller {
   constructor (
@@ -7,11 +8,12 @@ export class CreateBookController implements Controller {
   ) {}
 
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
-    const { body, file } = httpRequest
-    const book = await this.createBook.create(body, file)
-    return {
-      statusCode: 201,
-      body: book
+    try {
+      const { body, file } = httpRequest
+      const book = await this.createBook.create(body, file)
+      return created(book)
+    } catch (error) {
+      return serverError(error as Error)
     }
   }
 }

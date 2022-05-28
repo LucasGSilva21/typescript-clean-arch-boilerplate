@@ -1,5 +1,6 @@
 import { Controller, HttpRequest, HttpResponse } from 'application/protocols/presentation'
 import { FindAllBook } from '../../../domain/usecases/book'
+import { ok, serverError } from '../../protocols/helpers/http-helper'
 
 export class FindAllBookController implements Controller {
   constructor (
@@ -7,10 +8,12 @@ export class FindAllBookController implements Controller {
   ) {}
 
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
-    const books = await this.findAllBook.findAll()
-    return {
-      statusCode: 200,
-      body: books
+    try {
+      const books = await this.findAllBook.findAll()
+
+      return ok(books)
+    } catch (error) {
+      return serverError(error as Error)
     }
   }
 }

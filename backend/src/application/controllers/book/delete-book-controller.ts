@@ -1,5 +1,7 @@
 import { Controller, HttpRequest, HttpResponse } from 'application/protocols/presentation'
 import { DeleteBook } from '../../../domain/usecases/book'
+import { InvalidParamError } from '../../errors'
+import { noContent, badRequest, serverError } from '../../protocols/helpers/http-helper'
 
 export class DeleteBookController implements Controller {
   constructor (
@@ -7,20 +9,17 @@ export class DeleteBookController implements Controller {
   ) {}
 
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
-    const { id } = httpRequest.params
-    const result = await this.deleteBook.delete(id)
+    try {
+      const { id } = httpRequest.params
+      const result = await this.deleteBook.delete(id)
 
-    if (!result) {
-      return {
-        statusCode: 400,
-        body: {
-          error: 'Book not found'
-        }
+      if (!result) {
+        return badRequest(new InvalidParamError('id'))
       }
-    }
 
-    return {
-      statusCode: 204
+      return noContent()
+    } catch (error) {
+      return serverError(error as Error)
     }
   }
 }

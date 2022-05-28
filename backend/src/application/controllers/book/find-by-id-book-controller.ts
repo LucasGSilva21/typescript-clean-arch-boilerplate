@@ -1,5 +1,7 @@
 import { Controller, HttpRequest, HttpResponse } from 'application/protocols/presentation'
 import { FindByIdBook } from '../../../domain/usecases/book'
+import { InvalidParamError } from '../../errors'
+import { ok, badRequest, serverError } from '../../protocols/helpers/http-helper'
 
 export class FindByIdBookController implements Controller {
   constructor (
@@ -7,21 +9,17 @@ export class FindByIdBookController implements Controller {
   ) {}
 
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
-    const { id } = httpRequest.params
-    const book = await this.findByIdBook.findById(id)
+    try {
+      const { id } = httpRequest.params
+      const book = await this.findByIdBook.findById(id)
 
-    if (!book) {
-      return {
-        statusCode: 400,
-        body: {
-          error: 'Book not found'
-        }
+      if (!book) {
+        return badRequest(new InvalidParamError('id'))
       }
-    }
 
-    return {
-      statusCode: 200,
-      body: book
+      return ok(book)
+    } catch (error) {
+      return serverError(error as Error)
     }
   }
 }
