@@ -15,9 +15,16 @@ custom:
   funcDir: src/main/functions
 
 functions:
-  createProject:
+  createBook:
     handler: ${self:custom.funcDir}/book/create-book-function.run
     events:
       - http:
           path: /books
           method: POST
+
+  findAllBook:
+    handler: ${self:custom.funcDir}/book/find-all-book-function.run
+    events:
+      - http:
+          path: /books
+          method: GET
