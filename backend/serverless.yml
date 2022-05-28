@@ -28,3 +28,10 @@ functions:
       - http:
           path: /books
           method: GET
+
+  findByIdBook:
+    handler: ${self:custom.funcDir}/book/find-by-id-book-function.run
+    events:
+      - http:
+          path: /books/{id}
+          method: GET
