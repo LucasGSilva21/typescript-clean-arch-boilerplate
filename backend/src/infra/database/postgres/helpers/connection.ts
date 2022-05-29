@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import { ConnectionNotFoundError, TransactionNotFoundError } from './errors'
 import { DbTransaction } from '../../../protocols/db-transaction'
 import { ObjectType, QueryRunner, Repository, DataSource } from 'typeorm'
@@ -19,11 +20,11 @@ export class PgConnection implements DbTransaction {
     if (!this.dataSource?.isInitialized) {
       this.dataSource = new DataSource({
         type: 'postgres',
-        host: 'localhost',
-        port: 5432,
-        username: 'postgres',
-        password: 'postgres',
-        database: 'postgres',
+        host: process.env.DB_HOST,
+        port: Number(process.env.DB_PORT) || 5432,
+        username: process.env.DB_USERNAME,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_DATABASE,
         entities: [PgBook],
         migrations: ['../migrations/*.{js,ts}'],
         synchronize: true
