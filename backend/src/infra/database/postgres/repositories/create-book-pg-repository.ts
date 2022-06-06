@@ -1,6 +1,6 @@
 
 import { Book, CreateBookData } from '../../../../domain/entities/book'
-import { CreateBookRepository } from '../../../../application/protocols/repositories/book'
+import { CreateBookRepository } from '../../../../application/repositories/book'
 import { PgRepository } from '../helpers/repository'
 import { PgBook } from '../entities/book'
 

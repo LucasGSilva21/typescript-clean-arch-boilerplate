@@ -1,6 +1,6 @@
 import { Book } from 'domain/entities/book'
 import { FindAllBook } from 'domain/usecases/book'
-import { FindAllBookRepository } from 'application/protocols/repositories/book'
+import { FindAllBookRepository } from 'application/repositories/book'
 
 export class FindAllBookUseCase implements FindAllBook {
   constructor (

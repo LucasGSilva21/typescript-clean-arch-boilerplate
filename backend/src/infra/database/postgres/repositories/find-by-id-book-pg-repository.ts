@@ -1,5 +1,5 @@
 import { Book } from '../../../../domain/entities/book'
-import { FindByIdBookRepository } from '../../../../application/protocols/repositories/book'
+import { FindByIdBookRepository } from '../../../../application/repositories/book'
 import { PgRepository } from '../helpers/repository'
 import { PgBook } from '../entities/book'
 

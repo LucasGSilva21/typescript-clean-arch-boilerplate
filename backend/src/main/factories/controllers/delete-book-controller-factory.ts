@@ -1,4 +1,4 @@
-import { DeleteBookController } from '../../../application/controllers/book'
+import { DeleteBookController } from '../../../presentation/controllers/book'
 import { DeleteBookUseCase } from '../../../application/usecases/book'
 import { PgFindByIdBookRepository, PgDeleteBookRepository } from '../../../infra/database/postgres/repositories'
 

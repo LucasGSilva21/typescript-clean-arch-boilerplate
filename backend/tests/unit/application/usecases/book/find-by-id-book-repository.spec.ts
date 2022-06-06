@@ -1,5 +1,5 @@
 import { FindByIdBookUseCase } from '../../../../../src/application/usecases/book'
-import { FindByIdBookRepository } from '../../../../../src/application/protocols/repositories/book'
+import { FindByIdBookRepository } from '../../../../application/repositories/book'
 import { mockFindByIdBookRepository } from '../../../../utils/mocks/application'
 import { mockBook } from '../../../../utils/mocks/domain/mock-book'
 import { throwError } from '../../../../utils/helpers/throw-error'

@@ -1,6 +1,6 @@
-import { Controller, HttpRequest, HttpResponse } from 'application/protocols/presentation'
+import { Controller, HttpRequest, HttpResponse } from 'presentation/protocols'
 import { FindAllBook } from '../../../domain/usecases/book'
-import { ok, serverError } from '../../protocols/helpers/http-helper'
+import { ok, serverError } from '../../helpers/http-helper'
 
 export class FindAllBookController implements Controller {
   constructor (

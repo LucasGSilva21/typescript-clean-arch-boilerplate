@@ -1,5 +1,5 @@
 import { DeleteBook } from '../../../domain/usecases/book'
-import { DeleteBookRepository, FindByIdBookRepository } from '../../protocols/repositories/book'
+import { DeleteBookRepository, FindByIdBookRepository } from '../../repositories/book'
 
 export class DeleteBookUseCase implements DeleteBook {
   constructor (

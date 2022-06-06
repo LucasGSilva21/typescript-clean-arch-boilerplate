@@ -1,4 +1,4 @@
-import { Validation } from '../../protocols/helpers/validation'
+import { Validation } from '../../protocols/validation'
 
 export class CreateBookValidator implements Validation {
   validate (input: any): any {

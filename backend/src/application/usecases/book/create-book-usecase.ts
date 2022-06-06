@@ -1,7 +1,7 @@
 import { Book, CreateBookData } from 'domain/entities/book'
 import { CreateBook } from '../../../domain/usecases/book/create-book'
-import { CreateBookRepository } from '../../protocols/repositories/book'
-import { UploaderHelper } from '../../protocols/helpers/uploader-helper'
+import { CreateBookRepository } from '../../repositories/book'
+import { UploaderHelper } from '../../protocols/uploader-helper'
 import { File } from '../../../domain/models'
 
 export class CreateBookUseCase implements CreateBook {

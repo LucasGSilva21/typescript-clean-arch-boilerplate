@@ -1,5 +1,5 @@
 import { DeleteBookUseCase } from '../../../../../src/application/usecases/book'
-import { DeleteBookRepository, FindByIdBookRepository } from '../../../../../src/application/protocols/repositories/book'
+import { DeleteBookRepository, FindByIdBookRepository } from '../../../../application/repositories/book'
 import { mockFindByIdBookRepository, mockDeleteBookRepository } from '../../../../utils/mocks/application'
 import { throwError } from '../../../../utils/helpers/throw-error'
 

@@ -1,7 +1,7 @@
 import fs from 'fs'
 import { join } from 'path'
 import { Buffer } from 'buffer'
-import { UploaderHelper } from '../../application/protocols/helpers/uploader-helper'
+import { UploaderHelper } from '../../application/protocols/uploader-helper'
 import { File, UploadedFile } from '../../domain/models'
 
 export class LocalUploaderHelper implements UploaderHelper {

@@ -1,7 +1,7 @@
-import { Controller, HttpRequest, HttpResponse } from 'application/protocols/presentation'
+import { Controller, HttpRequest, HttpResponse } from 'presentation/protocols'
 import { DeleteBook } from '../../../domain/usecases/book'
-import { InvalidParamError } from '../../errors'
-import { noContent, badRequest, serverError } from '../../protocols/helpers/http-helper'
+import { InvalidParamError } from '../../../application/errors'
+import { noContent, badRequest, serverError } from '../../helpers/http-helper'
 
 export class DeleteBookController implements Controller {
   constructor (

@@ -1,4 +1,4 @@
-import { DeleteBookRepository } from '../../../../application/protocols/repositories/book'
+import { DeleteBookRepository } from '../../../../application/repositories/book'
 import { PgRepository } from '../helpers/repository'
 import { PgBook } from '../entities/book'
 

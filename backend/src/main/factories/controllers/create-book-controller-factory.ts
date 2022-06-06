@@ -1,4 +1,4 @@
-import { CreateBookController } from '../../../application/controllers/book/create-book-controller'
+import { CreateBookController } from '../../../presentation/controllers/book'
 import { CreateBookUseCase } from '../../../application/usecases/book/create-book-usecase'
 import { PgCreateBookRepository } from '../../../infra/database/postgres/repositories/create-book-pg-repository'
 import { LocalUploaderHelper } from '../../../infra/upload/local-uploader-helper'

@@ -1,6 +1,6 @@
 import { CreateBookUseCase } from '../../../../../src/application/usecases/book'
-import { CreateBookRepository } from '../../../../../src/application/protocols/repositories/book'
-import { UploaderHelper } from '../../../../../src/application/protocols/helpers/uploader-helper'
+import { CreateBookRepository } from '../../../../application/repositories/book'
+import { UploaderHelper } from '../../../../../src/application/protocols/uploader-helper'
 import { mockCreateBookRepository } from '../../../../utils/mocks/application'
 import { mockUploaderHelper } from '../../../../utils/mocks/application/helpers/mock-uploader-helper'
 import { mockCreateBookData } from '../../../../utils/mocks/domain/mock-book'

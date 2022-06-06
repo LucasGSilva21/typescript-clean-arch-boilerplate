@@ -1,4 +1,4 @@
-import { FindAllBookController } from '../../../application/controllers/book'
+import { FindAllBookController } from '../../../presentation/controllers/book'
 import { FindAllBookUseCase } from '../../../application/usecases/book'
 import { PgFindAllBookRepository } from '../../../infra/database/postgres/repositories'
 

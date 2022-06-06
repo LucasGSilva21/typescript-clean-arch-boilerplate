@@ -1,5 +1,5 @@
 import { Book, CreateBookData } from '../../../../src/domain/entities/book'
-import { CreateBookRepository } from '../../../../src/application/protocols/repositories/book'
+import { CreateBookRepository } from '../../../application/repositories/book'
 import { mockBook } from '../domain/mock-book'
 
 export const mockCreateBookRepository = (): CreateBookRepository => {
