@@ -1,3 +1,3 @@
 # Sobre
 
-Upload de arquivos utilizando clean arch
+Boilerplate para iniciar um projeto em typescript utilizando clean architecture
