@@ -1,6 +1,6 @@
 import { Controller, HttpRequest, HttpResponse } from 'presentation/protocols'
 import { CreateBook } from '../../../domain/usecases/book/create-book'
-import { created, serverError } from '../../helpers/http-helper'
+import { created, validateErrorHelper } from '../../helpers'
 
 export class CreateBookController implements Controller {
   constructor (
@@ -13,7 +13,7 @@ export class CreateBookController implements Controller {
       const book = await this.createBook.create(body, file)
       return created(book)
     } catch (error) {
-      return serverError(error as Error)
+      return validateErrorHelper(error as Error)
     }
   }
 }

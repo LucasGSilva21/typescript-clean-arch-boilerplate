@@ -10,8 +10,8 @@
     "up:test": "docker-compose -f docker-compose.test.yml up -d",
     "up": "docker-compose up -d",
     "down": "docker-compose down",
-    "build": "tsc",
-    "start": "npm run build && node ./dist/src/main/server.js",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "npm run build && node ./dist/main/server.js",
     "start:dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/main/server.ts",
     "deploy:offline": "npm run build && sls offline"
   },
@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "aws-multipart-parser": "^0.2.1",
+    "class-validator": "^0.13.2",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "k6": "^0.0.0",
