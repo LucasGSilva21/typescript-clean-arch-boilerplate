@@ -1,4 +1,4 @@
-import { DeleteBookRepository } from '../../../application/repositories/book'
+import { DeleteBookRepository } from '../../../../../../src/application/repositories/book'
 
 export const mockDeleteBookRepository = (): DeleteBookRepository => {
   class DeleteBookRepositoryStub implements DeleteBookRepository {

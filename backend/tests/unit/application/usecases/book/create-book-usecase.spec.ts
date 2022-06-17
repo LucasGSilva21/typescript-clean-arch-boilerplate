@@ -1,8 +1,9 @@
 import { CreateBookUseCase } from '../../../../../src/application/usecases/book'
-import { CreateBookRepository } from '../../../../application/repositories/book'
-import { UploaderHelper } from '../../../../../src/application/protocols/uploader-helper'
-import { mockCreateBookRepository } from '../../../../utils/mocks/application'
-import { mockUploaderHelper } from '../../../../utils/mocks/application/helpers/mock-uploader-helper'
+import { CreateBookRepository } from '../../../../../src/application/repositories/book'
+import { UploaderHelper, Validation } from '../../../../../src/application/protocols'
+import { mockCreateBookRepository } from '../../../../utils/mocks/application/usecases/book'
+import { mockUploaderHelper } from '../../../../utils/mocks/infra/mock-uploader-helper'
+import { mockCreateBookValidation } from '../../../../utils/mocks/application/validators/book/mock-create-book-validator'
 import { mockCreateBookData } from '../../../../utils/mocks/domain/mock-book'
 import { mockFile } from '../../../../utils/mocks/domain/mock-file'
 import { throwError } from '../../../../utils/helpers/throw-error'
@@ -12,16 +13,19 @@ type SutTypes = {
   sut: CreateBookUseCase
   createBookRepository: CreateBookRepository
   uploaderHelper: UploaderHelper
+  validation: Validation
 }
 
 const makeSut = (): SutTypes => {
   const createBookRepository = mockCreateBookRepository()
   const uploaderHelper = mockUploaderHelper()
-  const sut = new CreateBookUseCase(createBookRepository, uploaderHelper)
+  const validation = mockCreateBookValidation()
+  const sut = new CreateBookUseCase(createBookRepository, uploaderHelper, validation)
   return {
     sut,
     createBookRepository,
-    uploaderHelper
+    uploaderHelper,
+    validation
   }
 }
 

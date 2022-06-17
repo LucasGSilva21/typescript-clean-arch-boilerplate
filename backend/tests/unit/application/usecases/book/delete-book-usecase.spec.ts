@@ -1,6 +1,6 @@
 import { DeleteBookUseCase } from '../../../../../src/application/usecases/book'
-import { DeleteBookRepository, FindByIdBookRepository } from '../../../../application/repositories/book'
-import { mockFindByIdBookRepository, mockDeleteBookRepository } from '../../../../utils/mocks/application'
+import { DeleteBookRepository, FindByIdBookRepository } from '../../../../../src/application/repositories/book'
+import { mockFindByIdBookRepository, mockDeleteBookRepository } from '../../../../utils/mocks/application/usecases/book'
 import { throwError } from '../../../../utils/helpers/throw-error'
 
 type SutTypes = {

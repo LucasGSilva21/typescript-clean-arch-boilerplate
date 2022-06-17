@@ -1,5 +1,5 @@
-import { File, UploadedFile } from '../../../../../src/domain/models'
-import { UploaderHelper } from '../../../../../src/application/protocols/uploader-helper'
+import { File, UploadedFile } from '../../../../src/domain/models'
+import { UploaderHelper } from '../../../../src/application/protocols/uploader-helper'
 
 export const mockUploaderHelper = (): UploaderHelper => {
   class UploaderHelperStub implements UploaderHelper {
