@@ -3,7 +3,7 @@ version: '3'
 services:
   postgres:
     image: postgres
-    container_name: postgres-container
+    container_name: db-postgres-container
     environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
@@ -18,8 +18,8 @@ services:
 
   app:
     build: .
-    container_name: api-container
-    entrypoint: sh -c "dockerize -wait tcp://postgres:5432 -timeout 30s node ./dist/main/server.js"
+    container_name: node-upload-container
+    entrypoint: sh -c "dockerize -wait tcp://postgres:5432 -timeout 30s npm run start:dev"
     volumes:
       - .:/home/node/app
       - /home/node/app/node_modules
