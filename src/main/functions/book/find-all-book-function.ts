@@ -12,7 +12,6 @@ export const run = async (event: any) => {
       body: JSON.stringify(body)
     }
   } catch (error) {
-    console.log(error)
     return {
       statusCode: 500,
       body: 'Internal Server Error'

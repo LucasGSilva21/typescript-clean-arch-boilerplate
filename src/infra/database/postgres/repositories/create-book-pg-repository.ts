@@ -1,17 +1,17 @@
 
-import { Book, CreateBookData } from '../../../../domain/entities/book'
+import { Book } from '../../../../domain/entities/book'
 import { CreateBookRepository } from '../../../../application/repositories/book'
 import { PgRepository } from '../helpers/repository'
 import { PgBook } from '../entities/book'
 
 export class PgCreateBookRepository extends PgRepository implements CreateBookRepository {
-  async create (createBookData: CreateBookData): Promise<Book> {
+  async create (book: Book): Promise<Book> {
     const pgBookRepo = this.getRepository(PgBook)
 
-    const bookCreate = pgBookRepo.create(createBookData)
+    const bookCreate = pgBookRepo.create(book)
 
-    const book = await pgBookRepo.save(bookCreate)
+    const bookData = await pgBookRepo.save(bookCreate)
 
-    return book
+    return new Book(bookData)
   }
 }

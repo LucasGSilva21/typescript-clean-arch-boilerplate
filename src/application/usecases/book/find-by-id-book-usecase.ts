@@ -1,5 +1,5 @@
-import { Book } from 'domain/entities/book'
-import { FindByIdBook } from 'domain/usecases/book'
+import { Book } from '../../../domain/entities/book'
+import { FindByIdBook } from '../../../domain/usecases/book'
 import { FindByIdBookRepository } from 'application/repositories/book'
 
 export class FindByIdBookUseCase implements FindByIdBook {

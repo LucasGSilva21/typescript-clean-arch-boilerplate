@@ -1,6 +1,6 @@
-import { Book, CreateBookData } from '../../entities/book'
+import { Book, BookData } from '../../entities/book'
 import { File } from '../../models'
 
 export interface CreateBook {
-  create (createBookData: CreateBookData, file?: File): Promise<Book>
+  create (bookData: BookData, file?: File): Promise<Book>
 }

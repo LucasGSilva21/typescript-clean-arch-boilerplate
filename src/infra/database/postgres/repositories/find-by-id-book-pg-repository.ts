@@ -7,10 +7,10 @@ export class PgFindByIdBookRepository extends PgRepository implements FindByIdBo
   async findById (id: string): Promise<Book> {
     const pgBookRepo = this.getRepository(PgBook)
 
-    const book = pgBookRepo.findOne({
+    const bookData = await pgBookRepo.findOne({
       where: { id }
     })
 
-    return book
+    return new Book(bookData)
   }
 }

@@ -7,8 +7,8 @@ export class PgFindAllBookRepository extends PgRepository implements FindAllBook
   async findAll (): Promise<Book[]> {
     const pgBookRepo = this.getRepository(PgBook)
 
-    const books = pgBookRepo.find()
+    const booksData = await pgBookRepo.find()
 
-    return books
+    return booksData.map(bookData => new Book(bookData))
   }
 }

@@ -1,5 +1,5 @@
-import { Book, CreateBookData } from '../../../domain/entities/book'
+import { Book, BookData } from '../../../domain/entities/book'
 
 export interface CreateBookRepository {
-  create (createBookData: CreateBookData): Promise<Book>
+  create (bookData: BookData): Promise<Book>
 }
